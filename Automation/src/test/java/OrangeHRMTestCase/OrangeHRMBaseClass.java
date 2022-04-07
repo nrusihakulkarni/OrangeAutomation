@@ -1,5 +1,8 @@
 package OrangeHRMTestCase;
 
+// Trying to automate project  
+
+
 import org.openqa.selenium.By;
 
 import ComOrangeHRMBasaClass.FluientWaitClas;
