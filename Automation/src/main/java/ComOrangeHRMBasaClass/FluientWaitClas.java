@@ -12,10 +12,10 @@ import org.openqa.selenium.support.ui.Wait;
 public class FluientWaitClas {
 
 	@SuppressWarnings("unchecked")
-	public static void FluientWait( final By by) {
+	public static void FluientWait( final By by , int second ) {
 
 		@SuppressWarnings("rawtypes")
-		Wait wait = new FluentWait<WebDriver>(LaunchBrowser.driver).withTimeout(Duration.ofSeconds(10))
+		Wait wait = new FluentWait<WebDriver>(LaunchBrowser.driver).withTimeout(Duration.ofSeconds(second))
 				.pollingEvery(Duration.ofSeconds(2)).ignoring(Exception.class);
 
 		wait.until(new Function<WebDriver, WebElement>() {

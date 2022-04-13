@@ -13,7 +13,8 @@ public class LoginPage {
 		LaunchBrowser.driver.findElement(passwordXpath).sendKeys(password);
 	//Thread.sleep(1000);
 		LaunchBrowser.driver.findElement(loginButtonXpath).click();
-		
+
+
 	
 	}
 }

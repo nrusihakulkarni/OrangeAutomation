@@ -2,31 +2,46 @@ package OrangeHRMTestCase;
 
 // Trying to automate project  
 
-
 import org.openqa.selenium.By;
 
+import ComOrangeHRMBasaClass.CreateUserPage;
 import ComOrangeHRMBasaClass.FluientWaitClas;
 import ComOrangeHRMBasaClass.LaunchBrowser;
 import ComOrangeHRMBasaClass.LoginPage;
-import ComOrangeHRMBasaClass.LogoutPage;
 
 public class OrangeHRMBaseClass {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		LaunchBrowser.lunchBrowser("Chrome", "https://opensource-demo.orangehrmlive.com/", "null");
-		FluientWaitClas.FluientWait(By.xpath("//input[@id='btnLogin']"));
+		try {
+			LaunchBrowser.lunchBrowser("Chrome", "https://opensource-demo.orangehrmlive.com/", "null");
 
-		LoginPage.PageSignin(By.xpath("//input[@id='txtUsername']"), "admin123",
+			FluientWaitClas.FluientWait(By.xpath("//input[@id='btnLogin']"), 10);
 
-				By.xpath("//input[@id='txtPassword']"), "@Manager123", By.xpath("//input[@id='btnLogin']"));
+			LoginPage.PageSignin(By.xpath("//input[@id='txtUsername']"), "admin",
 
-		FluientWaitClas.FluientWait(By.id("welcome")); // Validation Link X path
+					By.xpath("//input[@id='txtPassword']"), "admin123", By.xpath("//input[@id='btnLogin']"));
 
-		LogoutPage.pageLogOut(By.id("welcome"), By.xpath("//a[contains(text(),'Logout')]"));
+			// Thread.sleep(1000);
+			FluientWaitClas.FluientWait(By.id("welcome"), 10); // Validation Link X path
 
-		FluientWaitClas.FluientWait(By.xpath("//input[@id='btnLogin']"));
-		LaunchBrowser.driver.quit();
+			CreateUserPage caCreateUserPage = new CreateUserPage();
+
+			caCreateUserPage.CreateUser();
+
+			/*
+			 * LogoutPage.pageLogOut(By.id("welcome"),
+			 * By.xpath("//a[contains(text(),'Logout')]")); LaunchBrowser.driver.quit();
+			 */
+
+		} catch (Exception e) {
+
+			System.err.println("TestCase Get Fail");
+			LaunchBrowser.driver.close();
+
+		}
 
 	}
 }
+
+//usr name : admin123 pass : @Manager123
